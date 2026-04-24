@@ -3,7 +3,7 @@
 Week 5 assignment — a Python command-line tool that manages GigaAcademy mentees
 in a PostgreSQL database running in Docker.
 
-**Level completed:** Level 1 (full CRUD + interactive menu)
+**Level completed:** Level 1 + Level 2 (full CRUD, argparse CLI, JOIN reports, transactions)
 
 ## Prerequisites
 
@@ -39,18 +39,21 @@ python app.py
 ## How to run
 
 ```bash
-python app.py
-```
+python app.py --help
 
-The interactive menu will appear:
+# Mentee commands
+python app.py mentee add --name "Ada Lovelace" --email "ada@example.com" --cohort B5
+python app.py mentee list
+python app.py mentee update --id 1 --cohort B6
+python app.py mentee delete --id 1
 
-```
-GigaAcademy Mentees Tracker
-  1) Add mentee
-  2) List mentees
-  3) Update cohort
-  4) Delete mentee
-  0) Quit
+# Record an assessment with scores (mentee_id:score pairs)
+python app.py assessment record --title "Python Fundamentals" --max-score 100 --date 2026-04-20 1:88 2:75 3:92
+
+# Reports
+python app.py report averages
+python app.py report struggling --threshold 60
+python app.py report summary
 ```
 
 ## Stopping the database
