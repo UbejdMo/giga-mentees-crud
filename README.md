@@ -66,13 +66,8 @@ docker compose down -v     # wipe everything and start fresh
 ## What was hard
 
 The hardest part was understanding why `conn.commit()` is necessary — at first
-it seemed like the data was saving but then it would disappear. Learning that
-psycopg wraps everything in a transaction by default, and that `with conn:` 
-commits automatically on success, made it click.
+it seemed like the data was saving but then it would disappear. 
 
 Parameterised queries (`%s` placeholders) also took some getting used to. It
 felt strange not to use f-strings, but understanding SQL injection made it clear
 why this rule is non-negotiable.
-
-Getting Docker and the Python connection to talk to each other on the right port
-(5433, not the default 5432) required careful reading of the docker-compose.yml.
